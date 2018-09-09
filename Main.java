@@ -1,18 +1,21 @@
-
 /**
- * Write a description of class Main here.
+ *Tons k mami no la veo comentando o k
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class Main
-{
-    
+{   
     public static void main(String[] args)
     {
-        // put your code here
-        int a = 1;
-        String egridad ="es lo que les falta chiquillos";
-        /*busquen a dios legal*/
+        if(args[0].toLowerCase().equals("-gui")){
+            InterfazGui interfaz1 = new InterfazGui();
+            interfaz1.mainMenu();
+        }
+        else{
+            Interfaz interfaz1 = new Interfaz();
+            interfaz1.mainMenu();
+        }        
     }
 }

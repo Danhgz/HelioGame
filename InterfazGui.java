@@ -9,7 +9,7 @@ public class InterfazGui
 {
     // instance variables - replace the example below with your own
     private int x;
-
+    //Interfaz gei jaja c mamo
     /**
      * Constructor for objects of class InterfazGui
      */
