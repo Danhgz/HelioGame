@@ -11,7 +11,7 @@ public class Cartas
     private double ataque;
     private double defensa;
     private String elemento;
-    private DecimalFormat df = new DecimalFormat("#.00");
+    private DecimalFormat df = new DecimalFormat("#.0");
     public Cartas()
     {
         ataque = Math.random()*11;
