@@ -17,5 +17,9 @@ public class hello
      */
     public int sampleMethod(int y)
     {
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> 7a5b626eaf58e1c63a4631180da8c997b975baac
 }
