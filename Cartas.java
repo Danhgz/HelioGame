@@ -1,33 +1,55 @@
-
 /**
  * Write a description of class Cartas here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.lang.Math;
+import java.text.DecimalFormat;
 public class Cartas
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Cartas
-     */
+    private double ataque;
+    private double defensa;
+    private String elemento;
+    private DecimalFormat df = new DecimalFormat("#.00");
     public Cartas()
     {
-        // initialise instance variables
-        x = 0;
+        ataque = Math.random()*11;
+        defensa = Math.random()*11;
+        if(ataque>10.0){
+            ataque = (int) ataque;
+        }      
+        if(defensa>10.0){
+            defensa = (int) defensa;
+        }
+        
+        switch((int)Math.random()*3)
+        {
+            case 0:
+            elemento = "Agua";
+            break;
+        
+            case 1:
+            elemento = "Fuego";
+            break;  
+        
+            default:
+            elemento = "Tierra";
+        }
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    
+    public String getAtaque()
     {
-        // put your code here
-        return x + y;
+        return df.format(ataque);
+    }
+    
+    public String getDefensa()
+    {
+        return df.format(defensa);
+    }
+    
+    public String getElemento()
+    {
+        return elemento;
     }
 }
