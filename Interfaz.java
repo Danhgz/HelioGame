@@ -30,14 +30,14 @@ public class Interfaz {
 
     public int pedirInt(String enunciadoprovisional){
         Scanner entrada = new Scanner (System.in);
-        System.out.print(falta);
+        System.out.print(enunciadoprovisional+ "\n");
         int numero = entrada.nextInt();
         return numero; 
     }
 
     public String pedirString(String enunciadoprovisional){
         Scanner entrada = new Scanner (System.in);
-        System.out.print (falta);
+        System.out.print (enunciadoprovisional+ "\n");
         String input = entrada.nextLine();
         return input; 
     }
