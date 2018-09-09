@@ -17,6 +17,7 @@ public class hello
      */
     public int sampleMethod(int y)
     {
+<<<<<<< HEAD
      blablaDAS
      DA
      AD
@@ -26,4 +27,9 @@ public class hello
      AS
      DA
      D
+=======
+     blabla
+     
+     heoildjoi
+>>>>>>> 02258c828e69ff12e74111c55f818a6599dd13b5
 }
