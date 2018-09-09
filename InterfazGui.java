@@ -14,6 +14,9 @@ public class InterfazGui
     JFrame frame;
     InterfazGui(){
         frame= new JFrame("pene jiji"); 
+        frame.setSize(500,200);
+        
+        frame.setVisible(true);
     }
     /**public void mostrarMensaje(){
         String mensaje="a";
@@ -22,5 +25,8 @@ public class InterfazGui
        JOptionPane.showMessageDialog(null,mensaje,titulo,JOptionPane.INFORMATION_MESSAGE);
     }
     */
+    public static void ejemplo(){
+        new InterfazGui();
     
+}
 }
