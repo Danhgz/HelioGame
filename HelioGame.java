@@ -15,6 +15,8 @@ public class HelioGame
     
     public void CorrerDOS()
     {
-        
+        Interfaz interfaz = new Interfaz();
+        interfaz.imprimirMenu1();
+        interfaz.pedirInt();
     }
 }

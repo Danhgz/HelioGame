@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Interfaz {
         public void imprimirMenu1() {
         System.out.print("                     HELIO GAME                       \n"+
-                        "~~~~~~~~~~~~~~~~~~~~~~~~~Menu~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
-                        "                                                       \n"+
-                        "1. Indicar cantidad de enfrentamientos por juegos      \n"+
-                        "2. Indicar porcentaje de modificacion de peso de ataque\n"+
-                        "3. Iniciar un juego nuevo                              \n"+
-                        "4. Salir                                               \n");
+                         "~~~~~~~~~~~~~~~~~~~~~~~~~Menu~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
+                         "                                                       \n"+
+                         "1. Indicar cantidad de enfrentamientos por juegos      \n"+
+                         "2. Indicar porcentaje de modificacion de peso de ataque\n"+
+                         "3. Iniciar un juego nuevo                              \n"+
+                         "4. Salir                                               \n");
     }
 
     public void imprimirMenu2() {
