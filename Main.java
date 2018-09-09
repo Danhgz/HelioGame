@@ -9,13 +9,12 @@ public class Main
 {   
     public static void main(String[] args)
     {
+        HelioGame helioGame = new HelioGame();
         if(args[0].toLowerCase().equals("-gui")){
-            InterfazGui interfaz1 = new InterfazGui();
-            interfaz1.mainMenu();
+            helioGame.CorrerGUI();
         }
         else{
-            Interfaz interfaz1 = new Interfaz();
-            interfaz1.mainMenu();
+            helioGame.CorrerDOS();
         }        
     }
 }
