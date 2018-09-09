@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class hola here.
+ * Write a description of class hello here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class hola
+public class hello
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class hola
+     * Constructor for objects of class hello
      */
-    public hola()
+    public hello()
     {
         // initialise instance variables
         x = 0;
