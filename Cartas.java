@@ -23,6 +23,8 @@ public class Cartas
             defensa = (int) defensa;
         }
         
+        
+        
         switch((int)Math.random()*3)
         {
             case 0:
