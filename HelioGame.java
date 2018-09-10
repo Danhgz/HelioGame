@@ -17,6 +17,6 @@ public class HelioGame
     {
         Interfaz interfaz = new Interfaz();
         interfaz.imprimirMenu1();
-        interfaz.pedirInt();
+        interfaz.pedirInt("Digite la opcion que desea: ");
     }
 }
