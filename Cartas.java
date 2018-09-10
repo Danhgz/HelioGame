@@ -6,14 +6,19 @@
  */
 import java.lang.Math;
 import java.text.DecimalFormat;
+import java.util.*;
 public class Cartas
 {
     private double ataque;
     private double defensa;
+    private List<String> listaTierra = new ArrayList<String>();
+    private List<String> listaFuego = new ArrayList<String>();
+    private List<String> listaAgua = new ArrayList<String>();
     private String elemento;
     private DecimalFormat df = new DecimalFormat("#.0");
-    public Cartas()
-    {
+    public Cartas(){
+        
+        
         ataque = Math.random()*11;
         defensa = Math.random()*11;
         if(ataque>10.0){
@@ -39,6 +44,31 @@ public class Cartas
             elemento = "Tierra";
         }
     }
+    
+    public String Nombres(String elemento){
+        String nombre="";
+        int index=(int)Math.random()*3;
+        if (elemento=="Tierra"){
+            listaTierra.add("Bulbasaur");
+            listaTierra.add("Chikorita");
+            listaTierra.add("Trecko");
+            nombre=listaTierra.get(index);
+        }
+        if (elemento=="Fuego"){
+            listaFuego.add("Charmander");
+            listaFuego.add("Cyndaquil");
+            listaFuego.add("Torchic");
+            nombre=listaFuego.get(index);
+        }
+        if (elemento=="Agua"){
+        listaAgua.add("Squirtle");
+        listaAgua.add("Totodile");
+        listaAgua.add("Mudkip");
+        nombre=listaAgua.get(index);
+    }
+        return nombre;
+    }
+       
     
     public String getAtaque()
     {
