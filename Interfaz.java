@@ -15,8 +15,7 @@ public class Interfaz {
                          "1. Indicar cantidad de enfrentamientos por juegos      \n"+
                          "2. Indicar porcentaje de modificacion de peso de ataque\n"+
                          "3. Iniciar un juego nuevo                              \n"+
-                         "4. Salir                                               \n"+
-                         "- Digite la opcion que desea: ");
+                         "4. Salir                                               \n");
     }
 
     public void imprimirMenu2() {
@@ -25,8 +24,7 @@ public class Interfaz {
                          "1. Ver usuario y puntaje maximo                        \n"+
                          "2. Cambiar nombre del jugador                          \n"+
                          "3. Iniciar partida                                     \n"+
-                         "4. Salir                                               \n"+
-                         "Digite la opcion que desea:                              ");
+                         "4. Salir                                               \n");
     }
 
 
