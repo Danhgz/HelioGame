@@ -83,4 +83,8 @@ public class Cartas
     {
         return elemento;
     }
+    public String getNombre()
+    {
+        return nombre;
+    }
 }
