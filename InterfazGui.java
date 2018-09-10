@@ -10,6 +10,7 @@ import java.awt.*;
 import javax.swing.*;
 
 
+
 public class InterfazGui
 {
     // instance variables - replace the example below with your own
@@ -17,16 +18,20 @@ public class InterfazGui
     JPanel carta1;
     JPanel carta2;
     JPanel carta3;
+    JLabel imagen1;
     InterfazGui(String titulo){
         frame= new JFrame(titulo);
         carta1= new JPanel();
         carta2= new JPanel();
         carta3= new JPanel();
+        imagen1= new JLabel();
+        
         frame.setSize(900,500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        
         carta1.setBackground(Color.BLACK);
         carta2.setBackground(Color.BLUE);
         carta3.setBackground(Color.RED);
@@ -39,14 +44,15 @@ public class InterfazGui
         carta2.setLocation(300,0);
         frame.add(carta3);
         carta3.setLocation(600,0);
+        
+        imagen1.setIcon(new ImageIcon("images\\1.png"));
+        
+        imagen1.setLocation(0,0);
+        carta1.add(imagen1);
+        
+        
     }
-    /**public void mostrarMensaje(){
-        String mensaje="a";
-        String titulo="b";
-       //JOptionPane.showMessageDialog(null,mensaje,titulo,JOptionPane.INFORMATION_MESSAGE);
-       JOptionPane.showMessageDialog(null,mensaje,titulo,JOptionPane.INFORMATION_MESSAGE);
-    }
-    */
+    
     public static void ejemplo(){
         new InterfazGui("HelioGames");
     
