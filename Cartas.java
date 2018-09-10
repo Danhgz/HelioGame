@@ -11,10 +11,12 @@ public class Cartas
 {
     private double ataque;
     private double defensa;
+    private String elemento;
+    private String nombre;
+    private List<String> listaElemento = new ArrayList<String>();
     private List<String> listaTierra = new ArrayList<String>();
     private List<String> listaFuego = new ArrayList<String>();
     private List<String> listaAgua = new ArrayList<String>();
-    private String elemento;
     private DecimalFormat df = new DecimalFormat("#.0");
     public Cartas(){
         
@@ -27,25 +29,22 @@ public class Cartas
         if(defensa>10.0){
             defensa = (int) defensa;
         }
+        elemento=EscogerElemento();
+        nombre=EscogerNombre(elemento);
         
         
-        
-        switch((int)Math.random()*3)
-        {
-            case 0:
-            elemento = "Agua";
-            break;
-        
-            case 1:
-            elemento = "Fuego";
-            break;  
-        
-            default:
-            elemento = "Tierra";
-        }
+       
     }
     
-    public String Nombres(String elemento){
+    public String EscogerElemento(){
+        
+        int index=(int)Math.random()*3;
+        listaElemento.add("Agua");
+        listaElemento.add("Fuego");
+        listaElemento.add("Tierra");
+        return listaElemento.get(index);
+    }
+    public String EscogerNombre(String elemento){
         String nombre="";
         int index=(int)Math.random()*3;
         if (elemento=="Tierra"){
