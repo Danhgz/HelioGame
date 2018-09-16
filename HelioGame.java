@@ -11,7 +11,7 @@ public class HelioGame
     private Carta carta1;
     private Carta carta2;
     private Carta carta3;
-    private Carta cartaElegida;
+    private Carta cartaElegida=new Carta();
     private Carta cartaCompu;
 
     public HelioGame(char c)
@@ -114,32 +114,32 @@ public class HelioGame
                     break;
     
                 case "3":
-
                     if(jugador==null){
-                      jugador = interfaz.cambiarNombre(jugador);
-                    }                   
+                        jugador = interfaz.cambiarNombre(jugador);
+                    }
                     carta1= new Carta();
                     carta2= new Carta();
                     carta3= new Carta();
                     cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
-                    cartaCompu=new Carta ();                
-
-                    if(cartaEl=="1"){
-                        cartaElegida=carta1;
+                    cartaCompu=new Carta ();                        //ERROR PORQUE ESTA PICHA NO ENTRA A NINGUN IF 
+                                                                //SDFMSDKLAFNKLASDFNKLSDNFASDFSDA
+                                                                //SDFASKFLSDJASDKLFSJADFKLJSDAFFFFFFFF
+                    if(cartaEl.equals("1")){
+                        interfaz.luchaDeCartas(carta1,cartaCompu);
                     }
-                    if(cartaEl=="2"){
-                        cartaElegida=carta2;
+                    if(cartaEl.equals("2")){
+                        interfaz.luchaDeCartas(carta2,cartaCompu);
                     }
-                    if(cartaEl=="3"){
-                        cartaElegida=carta3;
+                    if(cartaEl.equals("3")){
+                        interfaz.luchaDeCartas(carta3,cartaCompu);
                     }
                     interfaz.luchaDeCartas(cartaElegida,cartaCompu);
                     break;
+                    
+                case "4": break;
 
-                    case "4": break;
-
-                    default:
-                        err = true;
+                default:
+                    err = true;
             }
         }while(!op.equals("4"));
     }
