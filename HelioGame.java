@@ -20,7 +20,7 @@ public class HelioGame
             interfaz = new Interfaz();
         }
         else{
-            interfazGui = new InterfazGUI(""); //No sé que va ahi
+            interfazGui = new InterfazGUI(); //No sé que va ahi
         }
         jugador= null;
         highscorer = new String[]{"Daniel Henao","Sergia Marquina","Jose Vacas"};
