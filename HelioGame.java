@@ -122,6 +122,7 @@ public class HelioGame
                 carta3= new Carta();
                 cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
                 cartaCompu=new Carta ();
+                
 
                 if(cartaEl=="1"){
                     cartaElegida=carta1;
@@ -132,7 +133,7 @@ public class HelioGame
                 if(cartaEl=="3"){
                     cartaElegida=carta3;
                 }
-                
+                interfaz.luchaDeCartas(cartaElegida,cartaCompu);
                 break;
 
                 case "4": break;

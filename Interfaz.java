@@ -146,14 +146,14 @@ public class Interfaz
             imprimirCartas(carta3);
             System.out.print("Digite el numero de la carta que desea(1-3):\n ");  
             escoger= input.next();
-            if(!escoger.matches("[123]"))
+            if(!escoger.matches("[123]")||!escoger.equalsIgnoreCase("s"))
             {
                 err=true;
             }else{
                 err=false;
             }
 
-        }while(err==true||!escoger.equalsIgnoreCase("s"));
+        }while(err==false);
         return escoger;
     }   
     
@@ -172,6 +172,6 @@ public class Interfaz
         System.out.print('\u000C');
         imprimirCartas(carta1);
         System.out.print("VS");
-        
+        imprimirCartas(carta2);
     }
 }
