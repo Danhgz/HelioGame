@@ -4,8 +4,8 @@ public class HelioGame
     private InterfazGUI interfazGui;
     
     private String jugador;
-    private double highscore; //hacer []
-    private String highscorer; //hacer []
+    private double[] highscore; 
+    private String[] highscorer; 
     private int rondas;
     private int handicap;//modificacion de peso de ataque     
     
@@ -18,8 +18,8 @@ public class HelioGame
             interfazGui = new InterfazGUI(""); //No sé que va ahi
         }
         jugador= null;
-        highscorer = "Daniel Henao";
-        highscore = 804.51;
+        highscorer = new String[]{"Daniel Henao","Sergia Marquina","Jose Vacas"};
+        highscore = new double[]{752.52,1313,6969};
         rondas = 5;
         handicap = 50;
     }
@@ -68,11 +68,11 @@ public class HelioGame
             switch(op)
             {
                 case "1":
-                    rondas= interfaz.modificarRondas(); //Falta el await y un mensaje de confirmacion
+                    rondas= interfaz.modificarRondas(); 
                     break;
             
                 case "2":
-                    handicap= interfaz.modificarHandicap();//Falta el await y un mensaje de confirmacion
+                    handicap= interfaz.modificarHandicap();
                     break;
                 
                 case "3":
@@ -101,18 +101,18 @@ public class HelioGame
             switch(op)
             {
                 case "1":
-                     interfaz.verMarcadores(highscore,highscorer); //Hacer []   
+                     interfaz.verMarcadores(highscore,highscorer);
                     break;
                             
                 case "2":
-                      jugador = interfaz.cambiarNombre(); //Falta el await y un mensaje de confirmacion
+                      jugador = interfaz.cambiarNombre(jugador);
                     break;
                     
                 case "3":
                     if(jugador==null){
-                      jugador = interfaz.cambiarNombre();
+                      jugador = interfaz.cambiarNombre(jugador);
                     }
-                    
+                    interfaz.imprimirCartas();
                     break;
                     
                 case "4": break;

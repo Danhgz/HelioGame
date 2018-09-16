@@ -7,38 +7,31 @@ public class Cartas
     private double defensa;
     private String elemento;
     private String nombre;
-    private List<String> listaElemento = new ArrayList<String>();
+    private String[] arrayElemento;
     private List<String> listaTierra = new ArrayList<String>();
     private List<String> listaFuego = new ArrayList<String>();
     private List<String> listaAgua = new ArrayList<String>();
     private DecimalFormat df = new DecimalFormat("#.0");
-    public Cartas(){
-        
-        
-        ataque = Math.random()*11;
-        defensa = Math.random()*11;
+    
+    public Cartas(){        
+        ataque = Math.random()*10.1; //Modifica ligeramente la media a costo obtener numeros decimales y el 10.0
+        defensa = Math.random()*10.1;
         if(ataque>10.0){
             ataque = (int) ataque;
         }      
         if(defensa>10.0){
             defensa = (int) defensa;
         }
-        elemento=EscogerElemento();
-        nombre=EscogerNombre(elemento);
-        
-        
-       
+        arrayElemento = new String[]{"Agua","Fuego","Tierra"};
+        elemento=escogerElemento();
+        nombre=escogerNombre(elemento);                       
     }
     
-    public String EscogerElemento(){
-        
+    public String escogerElemento(){                        
         int index=(int)Math.random()*3;
-        listaElemento.add("Agua");
-        listaElemento.add("Fuego");
-        listaElemento.add("Tierra");
-        return listaElemento.get(index);
+        return arrayElemento[index];
     }
-    public String EscogerNombre(String elemento){
+    public String escogerNombre(String elemento){
         String nombre="";
         int index=(int)Math.random()*3;
         if (elemento=="Tierra"){
@@ -58,27 +51,21 @@ public class Cartas
         listaAgua.add("Totodile");
         listaAgua.add("Mudkip");
         nombre=listaAgua.get(index);
-    }
+        }
         return nombre;
     }
        
-    
-    public String getAtaque()
-    {
-        return df.format(ataque);
-    }
-    
-    public String getDefensa()
-    {
-        return df.format(defensa);
-    }
-    
-    public String getElemento()
-    {
-        return elemento;
-    }
-    public String getNombre()
-    {
+    public String getNombre(){
         return nombre;
     }
+    public String getAtaque(){
+        return df.format(ataque);
+    }    
+    public String getDefensa(){
+        return df.format(defensa);
+    }   
+    public String getElemento(){
+        return elemento;
+    }
+    
 }
