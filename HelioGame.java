@@ -121,9 +121,9 @@ public class HelioGame
                 carta2= new Carta();
                 carta3= new Carta();
                 cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
-                cartaCompu=new Carta ();
-                
-
+                cartaCompu=new Carta ();                        //ERROR PORQUE ESTA PICHA NO ENTRA A NINGUN IF 
+                                                                //SDFMSDKLAFNKLASDFNKLSDNFASDFSDA
+                                                                //SDFASKFLSDJASDKLFSJADFKLJSDAFFFFFFFF
                 if(cartaEl=="1"){
                     interfaz.luchaDeCartas(carta1,cartaCompu);
                 }
