@@ -1,20 +1,8 @@
-
-/**
- * Write a description of class InterfazGui here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-
-
 import java.lang.*;
 import java.awt.*;
-
 import javax.swing.*;
 
-
-
-public class InterfazGui
+public class InterfazGUI
 {
     // instance variables - replace the example below with your own
     JFrame frame;
@@ -24,7 +12,7 @@ public class InterfazGui
     JPanel carta4;
     
     JLabel imagen1;
-    InterfazGui(String titulo){
+    public InterfazGUI(String titulo){
         frame= new JFrame(titulo);
         carta1= new JPanel();
         carta2= new JPanel();
@@ -99,7 +87,7 @@ boton.setContentAreaFilled(false);
         carta.setVisible(true);
     }
     public static void ejemplo(){
-        new InterfazGui("HelioGames");
+        new InterfazGUI("HelioGames");
     
 }
 }

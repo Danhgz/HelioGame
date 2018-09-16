@@ -1,20 +1,24 @@
 /**
  *Tons k mami no la veo comentando o k
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Henao B83714, Sergio Martinez B84621, Paula PoWoOn B86080) 
+ * @version (1.0)
  */
 
 public class Main
 {   
     public static void main(String[] args)
     {
-        HelioGame helioGame = new HelioGame();
-        if(args[0].toLowerCase().equals("-gui")){
-            helioGame.CorrerGUI();
+        
+        if(args.length > 0 && args[0].toLowerCase().equals("-gui"))
+        {
+            HelioGame helioGame = new HelioGame('g');
+            helioGame.correrGUI();
         }
-        else{
-            helioGame.CorrerDOS();
+        else
+        {
+            HelioGame helioGame = new HelioGame('d');
+            helioGame.correrDOS();
         }        
     }
 }
