@@ -1,7 +1,7 @@
 import java.lang.Math;
 import java.text.DecimalFormat;
 import java.util.*;
-public class Cartas
+public class Carta
 {
     private double ataque;
     private double defensa;
@@ -12,7 +12,7 @@ public class Cartas
     private List<String> listaFuego = new ArrayList<String>();
     private List<String> listaAgua = new ArrayList<String>();
     private DecimalFormat df = new DecimalFormat("#.0");
-    public Cartas(){
+    public Carta(){
         
         
         ataque = Math.random()*11;
@@ -32,15 +32,16 @@ public class Cartas
     
     public String EscogerElemento(){
         
-        int index=(int)Math.random()*3;
+        int index=(int)(Math.random()*3);
         listaElemento.add("Agua");
         listaElemento.add("Fuego");
         listaElemento.add("Tierra");
+        
         return listaElemento.get(index);
     }
     public String EscogerNombre(String elemento){
         String nombre="";
-        int index=(int)Math.random()*3;
+        int index=(int)(Math.random()*3);
         if (elemento=="Tierra"){
             listaTierra.add("Bulbasaur");
             listaTierra.add("Chikorita");
