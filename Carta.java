@@ -13,7 +13,7 @@ public class Carta
     private DecimalFormat df;
     
     public Carta(){
-        df = new DecimalFormat("#.0");
+        df = new DecimalFormat("0.0");
         ataque = Math.random()*10.1;
         defensa = Math.random()*10.1;
         if(ataque>10.0){

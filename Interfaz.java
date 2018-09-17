@@ -9,7 +9,7 @@ public class Interfaz
     public Interfaz()
     {
         input = new Scanner (System.in);
-        df = new DecimalFormat("#.00");
+        df = new DecimalFormat("0.00");
     }
 
     public String imprimirMenuPrincipal(boolean err)
@@ -160,13 +160,17 @@ public class Interfaz
                          " (Digite S para salir)\n\n"+
                          " -Cual es el nombre de la proxima leyenda? ");
         nombre= input.next();
+        if(nombre.equalsIgnoreCase("s"))
+        {
+            nombre=nombrePrev;
+        }
         if(!nombre.equals(nombrePrev)) //Mensaje de confirmacion de cambio
         {
             try
             {
                 System.out.print('\u000C');
                 System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                                 "          -- Nombre actualizado exitosamente! --");
+                                 "             -- A la batalla "+nombre+"! --");
                 Thread.sleep(1250);
             }
             catch(Exception e){
@@ -182,15 +186,15 @@ public class Interfaz
             System.out.print('\u000C');
             System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n");  
             if(err){          
-                System.out.print(" Atencion! Digite una opcion valida o \"S\" para salir\n\n");
+                System.out.print(" Atencion! Digite una opcion valida o \"S\" para salir\n");
             }
             else{
-                System.out.print(" (Digite S para salir)\n\n");
+                System.out.print(" (Digite S para salir)\n");
             }
             imprimirCartas(carta1);
             imprimirCartas(carta2);
             imprimirCartas(carta3);
-            System.out.print("  -Digite el numero de la carta que desea(1-3):\n ");  
+            System.out.print("\n  -Digite el numero de la carta que desea(1-3):\n ");  
             escoger= input.next();
             if(!escoger.matches("[123sS]")){
                 err= true;
@@ -219,29 +223,46 @@ public class Interfaz
                          " *** Esta seguro que desea abandonar la partida? ***\n"+
                          "                        (S/N) ");
             escoger = input.next();
-        }while((escoger.matches("[SsNn]")));
+        }while(!(escoger.equalsIgnoreCase("s")||escoger.equalsIgnoreCase("n")));
         return escoger;
     }
     
     public void imprimirCartas(Carta carta){
-        System.out.print("        *- - - - - - - - - - - -*\n"+
-                         "        |       "+carta.getNombre()+"\t\t|\n"+
-                         "        |                       | \n"+
-                         "        |     Ataque----"+carta.getAtaque()+"\t|\n"+
-                         "        |                       | \n"+
-                         "        |     Defensa---"+carta.getDefensa()+"\t|\n"+
-                         "        |                       | \n"+
-                         "        |     Elemento--"+carta.getElemento()+"\t|\n"+
-                         "        *- - - - - - - - - - - -*\n");  
+        System.out.print("                *- - - - - - - - - - - -*\n"+
+                         "                      ~ "+carta.getNombre()+" ~\n"+
+                         "                |                       | \n"+
+                         "                |     Ataque--- "+carta.getAtaque()+"\t|\n"+
+                         "                |                       | \n"+
+                         "                |     Defensa-- "+carta.getDefensa()+"\t|\n"+
+                         "                |                       | \n"+
+                         "                |     Elemento--"+carta.getElemento()+"\t|\n"+
+                         "                *- - - - - - - - - - - -*\n");  
     }                                  
     
-    public void luchaDeCartas(Carta carta1,Carta carta2){ //Hacer que se vea cool
+    public void luchaDeCartas(Carta carta1,Carta carta2, String jugador){ //Hacer que se vea cool
         System.out.print('\u000C');
-        System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        imprimirCartas(carta1);
-        System.out.print("           ~~~ VS ~~~\n");
-        imprimirCartas(carta2);
-        System.out.print("\n            -Digite una tecla para continuar- ");
+        System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
+                         "        "+jugador+" \n"+   
+                         "*- - - - - - - - - - - -*\n"+
+                         "      ~ "+carta1.getNombre()+" ~\n"+
+                         "|                       | \n"+
+                         "|     Ataque----"+carta1.getAtaque()+"\t|\n"+
+                         "|                       | \n"+
+                         "|     Defensa---"+carta1.getDefensa()+"\t|\n"+
+                         "|                       | \n"+
+                         "|     Elemento--"+carta1.getElemento()+"\t|\n"+
+                         "*- - - - - - - - - - - -*\n"+ 
+                         "                       ~~~ VS. ~~~         CPU\n"+
+                         "                                *- - - - - - - - - - - -*\n"+
+                         "                                      ~ "+carta2.getNombre()+" ~\n"+
+                         "                                |                       | \n"+
+                         "                                |     Ataque----"+carta2.getAtaque()+"\t|\n"+
+                         "                                |                       | \n"+
+                         "                                |     Defensa---"+carta2.getDefensa()+"\t|\n"+
+                         "                                |                       | \n"+
+                         "                                |     Elemento--"+carta2.getElemento()+"\t|\n"+
+                         "                                *- - - - - - - - - - - -*\n"+
+                         "\n           -Digite una tecla para continuar- ");
         input.next();
     }
     
@@ -251,8 +272,8 @@ public class Interfaz
         {
             System.out.print('\u000C');
             System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                             "  -Su puntaje despues de este enfrentamiento es:"+score+"\n");
-            if(rondasRestantes==1){
+                             "  -Su puntaje despues de este enfrentamiento es: "+score+"\n");
+       if(rondasRestantes==1){
                 System.out.print("\n                   ** Ronda Final! **");
             }
             else
@@ -260,9 +281,9 @@ public class Interfaz
                     System.out.print("\n               ~~~ Gracias por jugar! ~~~");
                 }
                 else{
-                    System.out.print("   Faltan "+rondasRestantes+" rondas!");
+                    System.out.print("\n                   Faltan "+rondasRestantes+" rondas!");
                 }
-            Thread.sleep(1500);
+            Thread.sleep(2000);
         }
         catch(Exception e){
         }                 
@@ -274,7 +295,7 @@ public class Interfaz
         {
             System.out.print('\u000C');
             System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                             "\n\n      -- Felicidades, entraste al salon de la fama! --");
+                             "\n     -- Felicidades, entraste al salon de la fama! --");
             Thread.sleep(1650);
         }
         catch(Exception e){
