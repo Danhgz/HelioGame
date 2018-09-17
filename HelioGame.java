@@ -1,18 +1,23 @@
+import java.text.DecimalFormat;
+
 public class HelioGame
 {
     private Interfaz interfaz;
     private InterfazGUI interfazGui;
-    private String cartaEl;
-    private String jugador;
-    private double[] highscore; 
-    private String[] highscorer; 
-    private int rondas;
-    private int handicap;//modificacion de peso de ataque     
+    private Carta cartaCompu;
     private Carta carta1;
     private Carta carta2;
     private Carta carta3;
-    private Carta cartaElegida=new Carta();
-    private Carta cartaCompu;
+    private Juez juez;
+    private DecimalFormat df;
+    
+    private String[] highscorer;
+    private double[] highscore; 
+    private int cambioAtaque;//modificacion de peso de ataque
+    private String cartaEl;
+    private String jugador;
+    private double score;
+    private int rondas;              
 
     public HelioGame(char c)
     {
@@ -20,13 +25,16 @@ public class HelioGame
             interfaz = new Interfaz();
         }
         else{
-            interfazGui = new InterfazGUI(); //No sé que va ahi
+            interfazGui = new InterfazGUI(); 
         }
+        juez = new Juez();
+        df = new DecimalFormat("#.00");
+        
+        highscorer = new String[]{null,null,null};
+        highscore = new double[]{0,0,0};
         jugador= null;
-        highscorer = new String[]{"Daniel Henao","Sergia Marquina","Jose Vacas"};
-        highscore = new double[]{752.52,1313,6969};
-        rondas = 5;
-        handicap = 50;
+        cambioAtaque = 50;
+        rondas = 5;        
     }
 
     public void correrGUI()
@@ -44,7 +52,7 @@ public class HelioGame
                 break;
 
                 case "2":
-                //handicap= interfaz.modificarHandicap();
+                //cambioAtaque= interfaz.modificarHandicap();
                 break;
 
                 case "3":
@@ -77,7 +85,7 @@ public class HelioGame
                     break;
             
                 case "2":
-                    handicap= interfaz.modificarHandicap();
+                    cambioAtaque= interfaz.modificarCambioAtaque();
                     break;                
 
                 case "3":
@@ -117,23 +125,8 @@ public class HelioGame
                     if(jugador==null){
                         jugador = interfaz.cambiarNombre(jugador);
                     }
-                    carta1= new Carta();
-                    carta2= new Carta();
-                    carta3= new Carta();
-                    cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
-                    cartaCompu=new Carta ();                        //ERROR PORQUE ESTA PICHA NO ENTRA A NINGUN IF 
-                                                                //SDFMSDKLAFNKLASDFNKLSDNFASDFSDA
-                                                                //SDFASKFLSDJASDKLFSJADFKLJSDAFFFFFFFF
-                    if(cartaEl.equals("1")){
-                        interfaz.luchaDeCartas(carta1,cartaCompu);
-                    }
-                    if(cartaEl.equals("2")){
-                        interfaz.luchaDeCartas(carta2,cartaCompu);
-                    }
-                    if(cartaEl.equals("3")){
-                        interfaz.luchaDeCartas(carta3,cartaCompu);
-                    }
-                    interfaz.luchaDeCartas(cartaElegida,cartaCompu);
+                    correrPartidaDOS();
+
                     break;
                     
                 case "4": break;
@@ -143,5 +136,84 @@ public class HelioGame
             }
         }while(!op.equals("4"));
     }
-
+    
+    public void correrPartidaDOS()
+    {
+        score= 0.0;
+        for(int i=1; i<=rondas; ++i)
+        {
+            carta1= new Carta();
+            carta2= new Carta();
+            carta3= new Carta();
+            cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
+            if(cartaEl.equalsIgnoreCase("s")){
+                i=rondas+1;
+            }
+            else
+            {
+                cartaCompu=new Carta ();
+                if(cartaEl.equals("1"))
+                {
+                    interfaz.luchaDeCartas(carta1,cartaCompu);
+                    score+=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    score-=juez.comparar(cartaCompu,carta1,cambioAtaque);
+                }
+                if(cartaEl.equals("2"))
+                {
+                    interfaz.luchaDeCartas(carta2,cartaCompu);
+                    score+=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    score-=juez.comparar(cartaCompu,carta2,cambioAtaque);
+                }
+                if(cartaEl.equals("3"))
+                {
+                    interfaz.luchaDeCartas(carta3,cartaCompu);
+                    score+=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    score-=juez.comparar(cartaCompu,carta3,cambioAtaque);
+                }            
+                interfaz.resultadoRonda(df.format(score),rondas-i);
+           }
+        }       
+        if(!cartaEl.equalsIgnoreCase("s")){
+            acomodarMarcadores(score);
+        }        
+    }
+    
+    public void acomodarMarcadores(double score)
+    {
+        boolean logro= false;
+        if(score>highscore[0])
+        {
+            highscore[2]=highscore[1];
+            highscorer[2]=highscorer[1];
+            highscore[1]=highscore[0];
+            highscorer[1]=highscorer[0];
+            highscore[0]=score;
+            highscorer[0]=jugador;
+            logro= true;
+        }
+        else
+        {
+            if(score>highscore[1])
+            {
+                highscore[2]=highscore[1];
+                highscorer[2]=highscorer[1];
+                highscore[1]=score;
+                highscorer[1]=jugador;
+                logro= true;
+            }
+            else
+            {
+                if(score>highscore[2])
+                {
+                    highscore[2]=score;
+                    highscorer[2]=jugador;
+                    logro= true;
+                }
+            }
+        }
+        if(logro){
+            interfaz.cambioMarcador();
+        }
+    }
 }
+

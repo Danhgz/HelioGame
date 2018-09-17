@@ -1,85 +1,87 @@
 import java.lang.Math;
 import java.text.DecimalFormat;
-import java.util.*;
 public class Carta
 {
     private double ataque;
     private double defensa;
     private String elemento;
     private String nombre;
-    private List<String> listaElemento = new ArrayList<String>();
-    private List<String> listaTierra = new ArrayList<String>();
-    private List<String> listaFuego = new ArrayList<String>();
-    private List<String> listaAgua = new ArrayList<String>();
-    private DecimalFormat df = new DecimalFormat("#.0");
+    private String[] listaElemento;
+    private String[] listaAgua;
+    private String[] listaFuego;
+    private String[] listaTierra;
+    private DecimalFormat df;
+    
     public Carta(){
-        
-        
-        ataque = Math.random()*11;
-        defensa = Math.random()*11;
+        df = new DecimalFormat("#.0");
+        ataque = Math.random()*10.1;
+        defensa = Math.random()*10.1;
         if(ataque>10.0){
             ataque = (int) ataque;
         }      
         if(defensa>10.0){
             defensa = (int) defensa;
         }
-        elemento=EscogerElemento();
-        nombre=EscogerNombre(elemento);
-        
-        
-       
+        listaElemento = new String[]{"Agua","Fuego","Tierra"};
+        listaAgua = new String[]{"Squirtle","Totodile","Mudkip"};
+        listaFuego= new String[]{"Charmander","Cyndaquil","Torchic"};
+        listaTierra = new String[]{"Bulbasaur","Chikorita","Trecko"};                
+        elemento=escogerElemento();
+        nombre=escogerNombre(elemento);       
     }
     
-    public String EscogerElemento(){
-        
-        int index=(int)(Math.random()*3);
-        listaElemento.add("Agua");
-        listaElemento.add("Fuego");
-        listaElemento.add("Tierra");
-        
-        return listaElemento.get(index);
+    /*public Carta(){   //Si sobra tiempo constructor por copia
+        ataque = Math.random()*10.1;
+        defensa = Math.random()*10.1;
+        if(ataque>10.0){
+            ataque = (int) ataque;
+        }      
+        if(defensa>10.0){
+            defensa = (int) defensa;
+        }
+        listaElemento = new String[]{"Agua","Fuego","Tierra"};
+        listaAgua = new String[]{"Squirtle","Totodile","Mudkip"};
+        listaFuego= new String[]{"Charmander","Cyndaquil","Torchic"};
+        listaTierra = new String[]{"Bulbasaur","Chikorita","Trecko"};                
+        elemento=escogerElemento();
+        nombre=escogerNombre(elemento);       
+    }*/
+    
+    public String escogerElemento(){        
+        int index=(int)(Math.random()*3);       
+        return listaElemento[index];
     }
-    public String EscogerNombre(String elemento){
+    
+    public String escogerNombre(String elemento)
+    {
         String nombre="";
         int index=(int)(Math.random()*3);
         if (elemento=="Tierra"){
-            listaTierra.add("Bulbasaur");
-            listaTierra.add("Chikorita");
-            listaTierra.add("Trecko");
-            nombre=listaTierra.get(index);
+            nombre=listaTierra[index];
         }
         if (elemento=="Fuego"){
-            listaFuego.add("Charmander");
-            listaFuego.add("Cyndaquil");
-            listaFuego.add("Torchic");
-            nombre=listaFuego.get(index);
+            nombre=listaFuego[index];
         }
         if (elemento=="Agua"){
-        listaAgua.add("Squirtle");
-        listaAgua.add("Totodile");
-        listaAgua.add("Mudkip");
-        nombre=listaAgua.get(index);
-    }
+        nombre=listaAgua[index];
+        }
         return nombre;
     }
        
-    
-    public String getAtaque()
-    {
-        return df.format(ataque);
-    }
-    
-    public String getDefensa()
-    {
-        return df.format(defensa);
-    }
-    
-    public String getElemento()
-    {
-        return elemento;
-    }
     public String getNombre()
     {
         return nombre;
     }
+    public String getAtaque()
+    {
+        return df.format(ataque);
+    }    
+    public String getDefensa()
+    {
+        return df.format(defensa);
+    }    
+    public String getElemento()
+    {
+        return elemento;
+    }    
 }
