@@ -1,3 +1,4 @@
+//Clase en la que se construye la interfaz de texto. 
 import java.util.Scanner; 
 import java.util.concurrent.TimeUnit;
 import java.text.DecimalFormat;
@@ -13,6 +14,7 @@ public class Interfaz
     }
 
     public String imprimirMenuPrincipal(boolean err)
+    //metodo para imprimir el menu inicial del juego en consola. 
     {
         System.out.print('\u000C');
         System.out.print("~~~~~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
@@ -31,6 +33,7 @@ public class Interfaz
     }
 
     public String imprimirMenuJuego(boolean err)
+    //metodo para imprimir el menu de juego en consola. 
     {
         System.out.print('\u000C');
         System.out.print("~~~~~~~~~~~~~~~~~~~~NUEVO JUEGO~~~~~~~~~~~~~~~~~~~~~~~\n\n"+                        
@@ -48,6 +51,7 @@ public class Interfaz
     }
 
     public int modificarRondas()
+    // metodo para determinar el numero de rondas en la partida. 
     {
         int rondas = 0;    
         boolean err= false;
@@ -89,6 +93,7 @@ public class Interfaz
     }
 
     public int modificarCambioAtaque()
+    //metodo para modificar el porcentaje de modificación de peso de ataque. 
     {
         int cambioAtaque = -1;    
         boolean err= false;
@@ -137,6 +142,7 @@ public class Interfaz
 
     
     public void verMarcadores(double[] highscore, String[] highscorer)
+    //metodo para ver el puntaje mas alto y el nombre del jugador al que pertenece. 
     {  
         String salir;
         do
@@ -153,6 +159,7 @@ public class Interfaz
     }
 
     public String cambiarNombre(String nombrePrev)
+    //metodo para cambiar el nombre del jugador. 
     {
         String nombre= null;
         System.out.print('\u000C');
@@ -180,6 +187,7 @@ public class Interfaz
     }
 
     public String opcionesCartas(Carta carta1,Carta carta2, Carta carta3){ 
+        //metodo para la impresion de las cartas del jugador en consola.
         boolean err= false;
         String escoger="0";
         do{
@@ -214,6 +222,7 @@ public class Interfaz
     }   
          
     public String cancelarPartida()
+    //metodo para salirse de una partida. 
     {
         String escoger;
         do
@@ -228,6 +237,7 @@ public class Interfaz
     }
     
     public void imprimirCartas(Carta carta){
+        //metodo para el diseno e impresion de la carta.
         System.out.print("                *- - - - - - - - - - - -*\n"+
                          "                      ~ "+carta.getNombre()+" ~\n"+
                          "                |                       | \n"+
@@ -290,6 +300,7 @@ public class Interfaz
     }
     
     public void cambioMarcador()
+    //metodo para cuando el puntaje mas alto es sobrepasado.
     {
         try
         {

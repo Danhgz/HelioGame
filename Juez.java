@@ -1,13 +1,15 @@
+// Calcula el puntaje que gana el jugador al comparar su carta contra la de la computadora. 
+
 public class Juez
 {
-    private double signo;
+    private double signo; //ayuda a determinar si el jugador lleva la ventaja 
     private double ataque;
     private double defensa;
     public double comparar(Carta atacante, Carta defensor,int cambioAtaque)
     {
         ataque = Double.parseDouble(atacante.getAtaque());
         defensa= Double.parseDouble(defensor.getDefensa());
-        switch(atacante.getElemento())
+        switch(atacante.getElemento()) //establece las comparaciones de poder entre los elementos 
         {
             case "Agua":
                 if(defensor.getElemento().equals("Fuego")){
@@ -52,5 +54,6 @@ public class Juez
                 break;     
         }               
         return (ataque+signo*ataque*cambioAtaque/100)-defensa;
+        //formula para determinar la fuerza de ataque de un atacante contra su oponente
     }
 }

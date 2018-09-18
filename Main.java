@@ -1,8 +1,6 @@
 /**
- *Tons k mami no la veo comentando o k
  * 
  * @author (Daniel Henao B83714, Sergio Martinez B84621, Paula PoWoOn B86080) 
- * @version (1.0)
  */
 
 public class Main

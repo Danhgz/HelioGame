@@ -1,3 +1,4 @@
+ //Clase para definir las caracteristicas de las cartas del juego. 
 import java.lang.Math;
 import java.text.DecimalFormat;
 public class Carta
@@ -47,12 +48,14 @@ public class Carta
         nombre=escogerNombre(elemento);       
     }*/
     
-    public String escogerElemento(){        
+    public String escogerElemento(){ 
+     //método para asignarle un elemento a las cartas.
         int index=(int)(Math.random()*3);       
         return listaElemento[index];
     }
     
-    public String escogerNombre(String elemento)
+    public String escogerNombre(String elemento) 
+    //método para que las cartas tengan un nombre asociado con su elemento.
     {
         String nombre="";
         int index=(int)(Math.random()*3);
