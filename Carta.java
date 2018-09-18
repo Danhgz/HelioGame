@@ -30,8 +30,7 @@ public class Carta
         elemento=escogerElemento();
         nombre= escogerNombre(elemento);       
     }
-    
-<<<<<<< HEAD
+
 
     /*public Carta(){   //Si sobra tiempo constructor por copia
         ataque = Math.random()*10.1;
@@ -52,10 +51,6 @@ public class Carta
     
     public String escogerElemento(){ 
      //método para asignarle un elemento a las cartas.
-=======
- 
-    public String escogerElemento(){        
->>>>>>> 3ac4138b95b95f706a55a3b830ba89fce350de11
         int index=(int)(Math.random()*3);       
         return listaElemento[index];
     }

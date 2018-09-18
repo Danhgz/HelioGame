@@ -1,9 +1,6 @@
 
-<<<<<<< HEAD
 //Clase en la que se construye la interfaz gráfica. 
 import javax.swing.JOptionPane;
-=======
->>>>>>> 3ac4138b95b95f706a55a3b830ba89fce350de11
 import javax.swing.*;
 import java.util.*;
 import java.text.DecimalFormat;
