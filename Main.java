@@ -7,13 +7,13 @@ public class Main
 {   
     public static void main(String[] args)
     {
-        
+        //corre el juego con la interfaz grafica. 
         if(args.length > 0 && args[0].toLowerCase().equals("-gui"))
         {
             HelioGame helioGame = new HelioGame('g');
             helioGame.correrGUI();
         }
-        else
+        else //corre el juego con la interfaz de texto. 
         {
             HelioGame helioGame = new HelioGame('d');
             helioGame.correrDOS();

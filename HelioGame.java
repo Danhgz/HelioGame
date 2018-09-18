@@ -1,3 +1,4 @@
+
 import java.text.DecimalFormat;
 
 public class HelioGame
@@ -19,7 +20,7 @@ public class HelioGame
     private double score;
     private int rondas;              
 
-    public HelioGame(char c)
+    public HelioGame(char c) //method que determina cual interfaz se va a utilizar.
     {
         if(c=='d'){
             interfaz = new Interfaz();
@@ -36,7 +37,7 @@ public class HelioGame
         rondas = 5;        
     }
 
-    public void correrGUI()
+    public void correrGUI() 
     {
         String op;
         do

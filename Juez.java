@@ -9,7 +9,10 @@ public class Juez
     {
         ataque = Double.parseDouble(atacante.getAtaque());
         defensa= Double.parseDouble(defensor.getDefensa());
-        switch(atacante.getElemento()) //establece las comparaciones de poder entre los elementos 
+        switch(atacante.getElemento()) /*establece las comparaciones de poder entre los elementos en el cual: 
+                                         1.0: significa que el elemento del atacante es mas poderoso que el del oponente.
+                                         0.0: significa que el elemento del atacante es igual al del oponente.
+                                        -1.0: significa que el elemento del atacantes es mas debil que el del oponente. */
         {
             case "Agua":
                 if(defensor.getElemento().equals("Fuego")){

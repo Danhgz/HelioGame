@@ -13,16 +13,19 @@ public class Carta
     private String[] listaTierra;
     private DecimalFormat df;
     
-    public Carta(){
+    public Carta(){ //asigna las caracteristicas de las cartas.
+        //asigna el ataque y la defensa aleatoriamente.
         df = new DecimalFormat("0.0");
         ataque = Math.random()*10.1;
         defensa = Math.random()*10.1;
+        //casting del ataque y defensa para convertirlos a numeros enteros. 
         if(ataque>10.0){
             ataque = (int) ataque;
         }      
         if(defensa>10.0){
             defensa = (int) defensa;
         }
+        // asigna los nombres con su respectivo elemento. 
         listaElemento = new String[]{"Agua","Fuego","Tierra"};
         listaAgua = new String[]{"Squirtle","Totodile","Mudkip"};
         listaFuego= new String[]{"Charmander","Cyndaquil","Torchic"};
