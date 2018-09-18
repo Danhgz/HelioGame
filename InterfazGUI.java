@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 public class InterfazGUI{
     private DecimalFormat df; 
     String[] opciones={"1","2","3"};
+    String SALIR= "Esta seguro que desea abandonar la partida?\n \n";
     String CAMBIAR_NOMBRE="~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
         " -Cual es el nombre de la proxima leyenda?\n ";
 
@@ -48,7 +49,7 @@ public class InterfazGUI{
         String  cambioAtaqueAux;
         boolean valido= false;
         do{
-            cambioAtaqueAux=JOptionPane.showInputDialog(null,RONDAS, TITULO, JOptionPane.PLAIN_MESSAGE);
+            cambioAtaqueAux=JOptionPane.showInputDialog(null,PORCENCENTAJE_DE_ATAQUE, TITULO, JOptionPane.PLAIN_MESSAGE);
             if(cambioAtaqueAux==null){
                 valido=true;
             }else{
@@ -56,7 +57,7 @@ public class InterfazGUI{
                     valido=false; 
                     JOptionPane.showMessageDialog(null,ERROR_ATAQUE, TITULO,JOptionPane.WARNING_MESSAGE);
                 }else{
-                    if(!(Integer.parseInt(cambioAtaqueAux)<=100 && Integer.parseInt(cambioAtaqueAux)>=0)){
+                    if(Integer.parseInt(cambioAtaqueAux)<=100 && Integer.parseInt(cambioAtaqueAux)>=0){
                         valido=true; 
                         cambioAtaque=Integer.parseInt(cambioAtaqueAux);
                     }
@@ -123,13 +124,24 @@ public class InterfazGUI{
         mostrarCartas(carta1);
         mostrarCartas(carta2);
         mostrarCartas(carta3);
-        String opc = (String)JOptionPane.showInputDialog(null,
+        boolean salir=false;
+        String opc;
+        do{
+         opc = (String)JOptionPane.showInputDialog(null,
                "1)"+ carta1.getNombre()+"->  Ataque: "+carta1.getAtaque()+"| Defensa: " +carta1.getDefensa()+"| Elemento: " +carta1.getElemento()+"\n\n"+
-               "2)"+carta2.getNombre()+"->  Ataque: "+carta2.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta3.getElemento()+"\n\n"+
-               "3)"+carta3.getNombre()+"->  Ataque: "+carta3.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta3.getElemento()+"\n\n"
+               "2)"+carta2.getNombre()+"->  Ataque: "+carta2.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta2.getElemento()+"\n\n"+
+               "3)"+carta3.getNombre()+"->  Ataque: "+carta3.getAtaque()+"| Defensa: " +carta3.getDefensa()+"| Elemento: " +carta3.getElemento()+"\n\n"
             , TITULO, JOptionPane.PLAIN_MESSAGE,null,opciones,opciones[0]);
-            
-        return "a";
+         if(opc==null){
+             if(JOptionPane.showConfirmDialog (null, SALIR,"Salir?", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){ 
+                opc="s";
+                salir=true;
+                }   
+            }else{
+                salir=true;
+            }
+        }while(salir==false);
+        return opc;
     }
 
     public void mostrarCartas(Carta carta){
@@ -146,6 +158,55 @@ public class InterfazGUI{
             TITULO, JOptionPane.QUESTION_MESSAGE,icon);
 
     }
+    public void luchaDeCartas(Carta carta1,Carta carta2, String jugador){ //Hacer que se vea cool
+        JOptionPane.showMessageDialog(null,
+               jugador+":\n\n"+ carta1.getNombre()+"->  Ataque: "+carta1.getAtaque()+"| Defensa: " +carta1.getDefensa()+"| Elemento: " +carta1.getElemento()+"\n\n"+
+               "VS\n\n"+
+               "Computadora:\n\n"+carta2.getNombre()+"->  Ataque: "+carta2.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta2.getElemento()+"\n\n",
+               TITULO, JOptionPane.PLAIN_MESSAGE);
+    }
+    public void resultadoRonda(String score, int rondasRestantes)
+    {
+        try
+        {
+            JOptionPane.showMessageDialog(null,
+                "Su puntaje despues de este enfrentamiento es: "+score+"\n",
+            TITULO, JOptionPane.PLAIN_MESSAGE);
+       if(rondasRestantes==1){
+           JOptionPane.showMessageDialog(null,
+                "\n                   ** Ronda Final! **",
+            TITULO, JOptionPane.PLAIN_MESSAGE);
+            }
+            else
+                if(rondasRestantes==0){
+                     JOptionPane.showMessageDialog(null,
+                    "\n               ~~~ Gracias por jugar! ~~~\n",
+                    TITULO, JOptionPane.PLAIN_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,
+                    "\n                   Faltan "+rondasRestantes+" rondas!",
+                    TITULO, JOptionPane.PLAIN_MESSAGE);
+                }
+            Thread.sleep(2000);
+        }
+        catch(Exception e){
+        }   
+    }
+          public void cambioMarcador()
+    {
+        try
+        {
+
+             JOptionPane.showMessageDialog(null,
+             "\n     -- Felicidades, entraste al salon de la fama! --\n",
+                    TITULO, JOptionPane.PLAIN_MESSAGE);
+
+        }
+        catch(Exception e){
+        }
+    }
+    
 
    
 
