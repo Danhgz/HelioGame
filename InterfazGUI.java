@@ -1,4 +1,5 @@
 
+
 //Clase en la que se construye la interfaz gráfica. 
 import javax.swing.JOptionPane;
 import javax.swing.*;
