@@ -1,36 +1,36 @@
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.util.*;
 import java.text.DecimalFormat;
 public class InterfazGUI{
     private DecimalFormat df; 
     String[] opciones={"1","2","3"};
     String CAMBIAR_NOMBRE="~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                         " -Cual es el nombre de la proxima leyenda?\n ";
-                         
+        " -Cual es el nombre de la proxima leyenda?\n ";
+
     String ERROR_RONDAS="Error! Digite un numero entero positivo\n";
-    
+
     String ERROR_ATAQUE="Error! Digite un numero entre 0-100\n";
-    
+
     String RONDAS="\nDigite la cantidad de rondas por partida: \n\n";
-    
+
     String PORCENCENTAJE_DE_ATAQUE="\nDigite el % de modificacion de ataque: \n\n";
-    
+
     String TITULO="Helio Games";
-    
+
     String MENU_PRINCIPAL=           "~~~~~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
         " 1. Indicar cantidad de enfrentamientos por juego       \n"+
         " 2. Indicar porcentaje de modificacion de peso de ataque\n"+
         " 3. Iniciar un juego nuevo                              \n\n";
-        
+
     String MENU_JUEGO="~~~~~~~~~~~~~~~~~~~~NUEVO JUEGO~~~~~~~~~~~~~~~~~~~~~~~\n\n"+                        
         " 1. Ver usuario y puntaje maximo                        \n"+
         " 2. Cambiar nombre del jugador                          \n"+
         " 3. Iniciar partida                                     \n\n";
-        
+
     public InterfazGUI()
     {
-        
+
         df = new DecimalFormat("0.00");
     }
 
@@ -99,17 +99,17 @@ public class InterfazGUI{
 
     public void verMarcadores(double[] highscore, String[] highscorer){
         JOptionPane.showMessageDialog(null,
-                             "~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~\n"+        
-                             "-*-*-*-*-*-*-*- Salon de la Fama -*-*-*-*-*-*-*-\n\n"+
-                             "     1- "+df.format(highscore[0])+"        "+highscorer[0]+"\n"+
-                             "     2- "+df.format(highscore[1])+"        "+highscorer[1]+"\n"+
-                             "     3- "+df.format(highscore[2])+"        "+highscorer[2]+"\n"
-                             , TITULO,JOptionPane.PLAIN_MESSAGE);
+            "~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~\n"+        
+            "-*-*-*-*-*-*-*- Salon de la Fama -*-*-*-*-*-*-*-\n\n"+
+            "     1- "+df.format(highscore[0])+"        "+highscorer[0]+"\n"+
+            "     2- "+df.format(highscore[1])+"        "+highscorer[1]+"\n"+
+            "     3- "+df.format(highscore[2])+"        "+highscorer[2]+"\n"
+        , TITULO,JOptionPane.PLAIN_MESSAGE);
     }
-    
+
     public String cambiarNombre(String jugador)
     {
-        
+
         String jugAux = (String)JOptionPane.showInputDialog(null, CAMBIAR_NOMBRE, TITULO, JOptionPane.PLAIN_MESSAGE);
         if(!(jugAux==null)){
             jugador=jugAux;
@@ -117,4 +117,36 @@ public class InterfazGUI{
 
         return jugador;
     }
+
+    public String opcionesCartas(Carta carta1,Carta carta2, Carta carta3)
+    {
+        mostrarCartas(carta1);
+        mostrarCartas(carta2);
+        mostrarCartas(carta3);
+        String opc = (String)JOptionPane.showInputDialog(null,
+               "1)"+ carta1.getNombre()+"->  Ataque: "+carta1.getAtaque()+"| Defensa: " +carta1.getDefensa()+"| Elemento: " +carta1.getElemento()+"\n\n"+
+               "2)"+carta2.getNombre()+"->  Ataque: "+carta2.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta3.getElemento()+"\n\n"+
+               "3)"+carta3.getNombre()+"->  Ataque: "+carta3.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta3.getElemento()+"\n\n"
+            , TITULO, JOptionPane.PLAIN_MESSAGE,null,opciones,opciones[0]);
+            
+        return "a";
+    }
+
+    public void mostrarCartas(Carta carta){
+
+        String rutaIcono="images/"+carta.getNombre()+".png";
+        ImageIcon icon = new ImageIcon(rutaIcono);
+        JOptionPane.showMessageDialog(null,
+            " ~ "+carta.getNombre()+" ~\n"+
+            "Ataque----"+carta.getAtaque()+"\n"+
+
+            "Defensa---"+carta.getDefensa()+"\n"+
+
+            "Elemento--"+carta.getElemento()+"\n",
+            TITULO, JOptionPane.QUESTION_MESSAGE,icon);
+
+    }
+
+   
+
 }

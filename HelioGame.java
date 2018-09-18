@@ -176,7 +176,7 @@ public class HelioGame
             carta1= new Carta();
             carta2= new Carta();
             carta3= new Carta();
-            cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
+            cartaEl=interfazGui.opcionesCartas(carta1,carta2,carta3);
             if(cartaEl.equalsIgnoreCase("s")){
                 i=rondas+1;
             }
