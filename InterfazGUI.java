@@ -188,7 +188,7 @@ public class InterfazGUI{
                     "\n                   Faltan "+rondasRestantes+" rondas!",
                     TITULO, JOptionPane.PLAIN_MESSAGE);
                 }
-            Thread.sleep(2000);
+
         }
         catch(Exception e){
         }   
