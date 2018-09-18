@@ -46,7 +46,6 @@ public class HelioGame
             {
                 case "1":
                 rondas= interfazGui.modificarRondas(rondas);
-
                 break;
 
                 case "2":
@@ -163,7 +162,6 @@ public class HelioGame
                 op="Salir";
             }
         }while(!op.equals("Salir"));
-        System.exit(0);
     }
 
     public void correrPartidaGUI()
@@ -176,7 +174,7 @@ public class HelioGame
             carta1= new Carta();
             carta2= new Carta();
             carta3= new Carta();
-            cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
+            cartaEl=interfazGui.opcionesCartas(carta1,carta2,carta3);
             if(cartaEl.equalsIgnoreCase("s")){
                 i=rondas+1;
             }
@@ -185,24 +183,24 @@ public class HelioGame
                 cartaCompu=new Carta ();
                 if(cartaEl.equals("1"))
                 {
-                    interfaz.luchaDeCartas(carta1,cartaCompu,jugador);
+                    interfazGui.luchaDeCartas(carta1,cartaCompu,jugador);
                     primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
                     segunda=juez.comparar(cartaCompu,carta1,cambioAtaque);
                 }
                 if(cartaEl.equals("2"))
                 {
-                    interfaz.luchaDeCartas(carta2,cartaCompu,jugador);
-                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    interfazGui.luchaDeCartas(carta2,cartaCompu,jugador);
+                    primera=juez.comparar(carta2,cartaCompu,cambioAtaque);
                     segunda=juez.comparar(cartaCompu,carta2,cambioAtaque);
                 }
                 if(cartaEl.equals("3"))
                 {
-                    interfaz.luchaDeCartas(carta3,cartaCompu,jugador);
-                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    interfazGui.luchaDeCartas(carta3,cartaCompu,jugador);
+                    primera=juez.comparar(carta3,cartaCompu,cambioAtaque);
                     segunda=juez.comparar(cartaCompu,carta3,cambioAtaque);
                 } 
                 score+=primera-segunda;
-                interfaz.resultadoRonda(df.format(score),rondas-i);
+                interfazGui.resultadoRonda(df.format(score),rondas-i);
             }
         }       
         if(!cartaEl.equalsIgnoreCase("s")){
@@ -235,13 +233,13 @@ public class HelioGame
                 if(cartaEl.equals("2"))
                 {
                     interfaz.luchaDeCartas(carta2,cartaCompu,jugador);
-                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    primera=juez.comparar(carta2,cartaCompu,cambioAtaque);
                     segunda=juez.comparar(cartaCompu,carta2,cambioAtaque);
                 }
                 if(cartaEl.equals("3"))
                 {
                     interfaz.luchaDeCartas(carta3,cartaCompu,jugador);
-                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    primera=juez.comparar(carta3,cartaCompu,cambioAtaque);
                     segunda=juez.comparar(cartaCompu,carta3,cambioAtaque);
                 } 
                 score+=primera-segunda;
@@ -287,7 +285,7 @@ public class HelioGame
             }
         }
         if(logro){
-            interfaz.cambioMarcador();
+            interfazGui.cambioMarcador();
         }
     }
 }
