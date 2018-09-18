@@ -78,7 +78,7 @@ public class Interfaz
                 {
                     System.out.print('\u000C');
                     System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                                     "          -- Cambio realizado exitosamente! --");
+                                     "          -- Cambio realizado exitosamente! --\n");
                     Thread.sleep(1250);
                 }
                 catch(Exception e){
@@ -170,7 +170,7 @@ public class Interfaz
             {
                 System.out.print('\u000C');
                 System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                                 "             -- A la batalla "+nombre+"! --");
+                                 "             -- A la batalla "+nombre+"! --\n");
                 Thread.sleep(1250);
             }
             catch(Exception e){
@@ -278,7 +278,7 @@ public class Interfaz
             }
             else
                 if(rondasRestantes==0){
-                    System.out.print("\n               ~~~ Gracias por jugar! ~~~");
+                    System.out.print("\n               ~~~ Gracias por jugar! ~~~\n");
                 }
                 else{
                     System.out.print("\n                   Faltan "+rondasRestantes+" rondas!");
@@ -295,7 +295,7 @@ public class Interfaz
         {
             System.out.print('\u000C');
             System.out.print("~~~~~~~~~~~~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"+
-                             "\n     -- Felicidades, entraste al salon de la fama! --");
+                             "\n     -- Felicidades, entraste al salon de la fama! --\n");
             Thread.sleep(1650);
         }
         catch(Exception e){

@@ -10,7 +10,7 @@ public class HelioGame
     private Carta carta3;
     private Juez juez;
     private DecimalFormat df;
-    
+
     private String[] highscorer;
     private double[] highscore; 
     private int cambioAtaque;//modificacion de peso de ataque
@@ -29,8 +29,7 @@ public class HelioGame
         }
         juez = new Juez();
         df = new DecimalFormat("0.00");
-        
-        highscorer = new String[]{"nulo","nulo","nulo"};
+        highscorer = new String[]{"Nadie","Nadie","Nadie"};
         highscore = new double[]{0,0,0};
         jugador= "";
         cambioAtaque = 50;
@@ -40,34 +39,29 @@ public class HelioGame
     public void correrGUI()
     {
         String op;
-        boolean err = false;
         do
         {
-            op = interfaz.imprimirMenuPrincipal(err); //Cambiar
-            err = false;
+            op = interfazGui.imprimirMenuPrincipal(); //Cambiar
             switch(op)
             {
                 case "1":
-                //rondas= interfaz.modificarRondas();
+                rondas= interfazGui.modificarRondas(rondas);
+
                 break;
 
                 case "2":
-                //cambioAtaque= interfaz.modificarHandicap();
+                cambioAtaque= interfazGui.modificarCambioAtaque(cambioAtaque);
                 break;
 
                 case "3":
-                //correrMenuJuegoDOS();
+                correrMenuJuegoGUI();
                 break;
 
-                case "4":
-                System.out.println('\u000C');    
-                System.out.println("~~~~~~~~~~~~ Gracias por jugar, hasta luego! :) ~~~~~~~~~~~");
-                break;                 
-
                 default:
-                err = true;                        
+                op="Salir";
             }
-        }while(!op.equals("4"));
+        }while(!op.equals("Salir"));
+        System.exit(0);
     }
 
     public void correrDOS()
@@ -81,26 +75,27 @@ public class HelioGame
             switch(op)
             {
                 case "1":
-                    rondas= interfaz.modificarRondas(); 
-                    break;
-            
+                rondas= interfaz.modificarRondas(); 
+                break;
+
                 case "2":
-                    cambioAtaque= interfaz.modificarCambioAtaque();
-                    break;                
+                cambioAtaque= interfaz.modificarCambioAtaque();
+                break;                
 
                 case "3":
-                    correrMenuJuegoDOS();
-                    break;
+                correrMenuJuegoDOS();
+                break;
 
                 case "4":
-                    System.out.println('\u000C');    
-                    System.out.println("~~~~~~~~~~~~ Gracias por jugar, hasta luego! :) ~~~~~~~~~~~");
-                    break;                 
+                System.out.println('\u000C');    
+                System.out.println("~~~~~~~~~~~~ Gracias por jugar, hasta luego! :) ~~~~~~~~~~~");
+                break;                 
 
                 default:
-                    err = true;                        
+                err = true;                        
             }
         }while(!op.equals("4"));
+        System.exit(0);
     }
 
     public void correrMenuJuegoDOS()
@@ -114,30 +109,106 @@ public class HelioGame
             switch(op)
             {
                 case "1":
-                    interfaz.verMarcadores(highscore,highscorer);
-                    break;
+                interfaz.verMarcadores(highscore,highscorer);
+                break;
 
                 case "2":
-                    jugador = interfaz.cambiarNombre(jugador);
-                    break;
-    
+                jugador = interfaz.cambiarNombre(jugador);
+                break;
+
                 case "3":
-                    if(jugador.equals("")){
-                        jugador = interfaz.cambiarNombre(jugador);                     
-                    }
-                    if(!jugador.equals("")){
-                        correrPartidaDOS();
-                    }
-                    break;
-                    
+                if(jugador.equals("")){
+                    jugador = interfaz.cambiarNombre(jugador);                     
+                }
+                if(!jugador.equals("")){
+                    correrPartidaDOS();
+                }
+                break;
+
                 case "4": break;
 
                 default:
-                    err = true;
+                err = true;
             }
         }while(!op.equals("4"));
     }
-    
+
+    public void correrMenuJuegoGUI()
+    {
+        String op;
+        do
+        {
+            op = interfazGui.imprimirMenuJuego();
+           
+            switch(op)
+            {
+                case "1":
+                interfazGui.verMarcadores(highscore,highscorer);
+                break;
+
+                case "2":
+                jugador = interfazGui.cambiarNombre(jugador);
+                break;
+
+                case "3":
+                if(jugador.equals("")){
+                    jugador = interfazGui.cambiarNombre(jugador);                     
+                }
+                if(!jugador.equals("")){
+                    correrPartidaGUI();
+                }
+                break;
+                
+                default:
+                op="Salir";
+            }
+        }while(!op.equals("Salir"));
+        System.exit(0);
+    }
+
+    public void correrPartidaGUI()
+    {
+        score= 0.0;
+        double primera=0.0;
+        double segunda=0.0;
+        for(int i=1; i<=rondas; ++i)
+        {
+            carta1= new Carta();
+            carta2= new Carta();
+            carta3= new Carta();
+            cartaEl=interfaz.opcionesCartas(carta1,carta2,carta3);
+            if(cartaEl.equalsIgnoreCase("s")){
+                i=rondas+1;
+            }
+            else
+            {
+                cartaCompu=new Carta ();
+                if(cartaEl.equals("1"))
+                {
+                    interfaz.luchaDeCartas(carta1,cartaCompu,jugador);
+                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    segunda=juez.comparar(cartaCompu,carta1,cambioAtaque);
+                }
+                if(cartaEl.equals("2"))
+                {
+                    interfaz.luchaDeCartas(carta2,cartaCompu,jugador);
+                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    segunda=juez.comparar(cartaCompu,carta2,cambioAtaque);
+                }
+                if(cartaEl.equals("3"))
+                {
+                    interfaz.luchaDeCartas(carta3,cartaCompu,jugador);
+                    primera=juez.comparar(carta1,cartaCompu,cambioAtaque);
+                    segunda=juez.comparar(cartaCompu,carta3,cambioAtaque);
+                } 
+                score+=primera-segunda;
+                interfaz.resultadoRonda(df.format(score),rondas-i);
+            }
+        }       
+        if(!cartaEl.equalsIgnoreCase("s")){
+            acomodarMarcadores(score);
+        }        
+    }
     public void correrPartidaDOS()
     {
         score= 0.0;
@@ -175,13 +246,13 @@ public class HelioGame
                 } 
                 score+=primera-segunda;
                 interfaz.resultadoRonda(df.format(score),rondas-i);
-           }
+            }
         }       
         if(!cartaEl.equalsIgnoreCase("s")){
             acomodarMarcadores(score);
         }        
     }
-    
+
     public void acomodarMarcadores(double score)
     {
         boolean logro= false;
