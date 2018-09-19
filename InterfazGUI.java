@@ -37,7 +37,7 @@ public class InterfazGUI{
         df = new DecimalFormat("0.00");
     }
 
-    public String imprimirMenuPrincipal(){
+    public String imprimirMenuPrincipal(){ //metodo que imprime el menu principal
         String opc = (String)JOptionPane.showInputDialog(null, MENU_PRINCIPAL, TITULO, JOptionPane.PLAIN_MESSAGE,null,opciones,opciones[0]);
         if(opc==null){
             opc="Salir";
@@ -46,7 +46,8 @@ public class InterfazGUI{
         return opc;
     }
 
-    public int modificarCambioAtaque(int cambioAtaque)
+    public int modificarCambioAtaque(int cambioAtaque)//Método que despliega la ventana para modificar el porcentaje de ataque. 
+
     {
         String  cambioAtaqueAux;
         boolean valido= false;
@@ -68,8 +69,8 @@ public class InterfazGUI{
         }while(valido==false);
         return cambioAtaque;
     }
-    // Integer.parseInt(JOptionPane.showInputDialog(null,RONDAS, TITULO, JOptionPane.PLAIN_MESSAGE));
-    public int modificarRondas(int rondas)
+    
+    public int modificarRondas(int rondas)//Método que despliega la ventana para modificar la cantidad de rondas por juego.
     {
         String rondaAux; 
         boolean valido= false;
@@ -89,7 +90,8 @@ public class InterfazGUI{
         return rondas;
     }
 
-    public String imprimirMenuJuego()
+    public String imprimirMenuJuego()//Método que despliega una ventaja con el menú de juego. 
+
     {
 
         String opc = (String)JOptionPane.showInputDialog(null, MENU_JUEGO, TITULO, JOptionPane.PLAIN_MESSAGE,null,opciones,opciones[0]);
@@ -100,7 +102,8 @@ public class InterfazGUI{
         return opc;
     }
 
-    public void verMarcadores(double[] highscore, String[] highscorer){
+    public void verMarcadores(double[] highscore, String[] highscorer){ //Método que despliega los tres jugadores con mayor puntaje. 
+
         JOptionPane.showMessageDialog(null,
             "~~~~~~~~~~~~HELIO GAME~~~~~~~~~~~~\n"+        
             "-*-*-*-*-*-*-*- Salon de la Fama -*-*-*-*-*-*-*-\n\n"+
@@ -110,7 +113,8 @@ public class InterfazGUI{
         , TITULO,JOptionPane.PLAIN_MESSAGE);
     }
 
-    public String cambiarNombre(String jugador)
+    public String cambiarNombre(String jugador) //Método que le permite al jugador cambiar su nombre. 
+
     {
 
         String jugAux = (String)JOptionPane.showInputDialog(null, CAMBIAR_NOMBRE, TITULO, JOptionPane.PLAIN_MESSAGE);
@@ -121,7 +125,7 @@ public class InterfazGUI{
         return jugador;
     }
 
-    public String opcionesCartas(Carta carta1,Carta carta2, Carta carta3)
+    public String opcionesCartas(Carta carta1,Carta carta2, Carta carta3)//Método que imprime las tres cartas para el jugador. 
     {
         mostrarCartas(carta1);
         mostrarCartas(carta2);
@@ -146,7 +150,7 @@ public class InterfazGUI{
         return opc;
     }
 
-    public void mostrarCartas(Carta carta){
+    public void mostrarCartas(Carta carta){ //Método que le muestra la información detallada de cada carta al jugador. 
 
         String rutaIcono="images/"+carta.getNombre()+".png";
         ImageIcon icon = new ImageIcon(rutaIcono);
@@ -160,22 +164,20 @@ public class InterfazGUI{
             TITULO, JOptionPane.QUESTION_MESSAGE,icon);
 
     }
-    public void luchaDeCartas(Carta carta1,Carta carta2, String jugador){ //Hacer que se vea cool
+    public void luchaDeCartas(Carta carta1,Carta carta2, String jugador){ //Método que imprime la carta del usuario versus la carta de la computadora. 
+
         JOptionPane.showMessageDialog(null,
                jugador+":\n\n"+ carta1.getNombre()+"->  Ataque: "+carta1.getAtaque()+"| Defensa: " +carta1.getDefensa()+"| Elemento: " +carta1.getElemento()+"\n\n"+
                "VS\n\n"+
                "Computadora:\n\n"+carta2.getNombre()+"->  Ataque: "+carta2.getAtaque()+"| Defensa: " +carta2.getDefensa()+"| Elemento: " +carta2.getElemento()+"\n\n",
                TITULO, JOptionPane.PLAIN_MESSAGE);
     }
-    public void resultadoRonda(String score, int rondasRestantes)
-    {
-        try
-        {
-            JOptionPane.showMessageDialog(null,
+    public void resultadoRonda(String score, int rondasRestantes){ //Método que imprime el resultado después de cada ronda. 
+       JOptionPane.showMessageDialog(null,
                 "Su puntaje despues de este enfrentamiento es: "+score+"\n",
             TITULO, JOptionPane.PLAIN_MESSAGE);
-       if(rondasRestantes==1){
-           JOptionPane.showMessageDialog(null,
+         if(rondasRestantes==1){
+             JOptionPane.showMessageDialog(null,
                 "\n                   ** Ronda Final! **",
             TITULO, JOptionPane.PLAIN_MESSAGE);
             }
@@ -190,26 +192,16 @@ public class InterfazGUI{
                     "\n                   Faltan "+rondasRestantes+" rondas!",
                     TITULO, JOptionPane.PLAIN_MESSAGE);
                 }
-
+                
         }
-        catch(Exception e){
-        }   
-    }
-          public void cambioMarcador()
-    {
-        try
-        {
+        
+    public void cambioMarcador(){ //Método que despliega una ventana que le informa al usuario que ha conseguido un highscore. 
 
-             JOptionPane.showMessageDialog(null,
+        JOptionPane.showMessageDialog(null,
              "\n     -- Felicidades, entraste al salon de la fama! --\n",
                     TITULO, JOptionPane.PLAIN_MESSAGE);
 
         }
-        catch(Exception e){
-        }
+        
     }
-    
-
    
-
-}

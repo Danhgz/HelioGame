@@ -13,7 +13,7 @@ public class Interfaz
         df = new DecimalFormat("0.00");
     }
 
-    public String imprimirMenuPrincipal(boolean err)
+    public String imprimirMenuPrincipal(boolean err) 
     //metodo para imprimir el menu inicial del juego en consola. 
     {
         System.out.print('\u000C');

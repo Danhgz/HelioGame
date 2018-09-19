@@ -20,7 +20,7 @@ public class HelioGame
     private double score;
     private int rondas;              
 
-    public HelioGame(char c) //method que determina cual interfaz se va a utilizar.
+    public HelioGame(char c) 
     {
         if(c=='d'){
             interfaz = new Interfaz();
@@ -37,7 +37,7 @@ public class HelioGame
         rondas = 5;        
     }
 
-    public void correrGUI() 
+    public void correrGUI() //corre el menú principal de la interfaz gráfica. J
     {
         String op;
         do
@@ -64,7 +64,7 @@ public class HelioGame
         System.exit(0);
     }
 
-    public void correrDOS()
+    public void correrDOS()//Método que corre el menú principal de la interfaz de texto.
     {
         String op;
         boolean err = false;
@@ -98,7 +98,8 @@ public class HelioGame
         System.exit(0);
     }
 
-    public void correrMenuJuegoDOS()
+    public void correrMenuJuegoDOS()//Método que corre el menú de juego en la interfaz de texto. 
+
     {
         String op;
         boolean err = false;
@@ -133,7 +134,8 @@ public class HelioGame
         }while(!op.equals("4"));
     }
 
-    public void correrMenuJuegoGUI()
+    public void correrMenuJuegoGUI()//Método que corre el menú de juego en la interfaz de texto. 
+
     {
         String op;
         do
@@ -165,7 +167,7 @@ public class HelioGame
         }while(!op.equals("Salir"));
     }
 
-    public void correrPartidaGUI()
+    public void correrPartidaGUI()//Método que inicia el juego en la interfaz gráfica. 
     {
         score= 0.0;
         double primera=0.0;
@@ -208,7 +210,8 @@ public class HelioGame
             acomodarMarcadores(score);
         }        
     }
-    public void correrPartidaDOS()
+    public void correrPartidaDOS()//Método que inicia el juego en la interfaz de texto. 
+
     {
         score= 0.0;
         double primera=0.0;
@@ -252,7 +255,7 @@ public class HelioGame
         }        
     }
 
-    public void acomodarMarcadores(double score)
+    public void acomodarMarcadores(double score)//metodo que asigna el highscore.
     {
         boolean logro= false;
         if(score>highscore[0])
